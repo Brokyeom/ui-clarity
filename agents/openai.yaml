@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Clarity"
+  short_description: "불필요한 설명과 중복을 줄여 UI의 핵심을 명확하게 정리"
+  default_prompt: "$ui-clarity로 현재 UI의 중복 정보와 불필요한 설명을 정리해줘. 판단에 필요한 상태와 집계 범위는 유지해줘."
