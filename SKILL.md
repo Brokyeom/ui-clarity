@@ -1,74 +1,74 @@
 ---
 name: ui-clarity
-description: "Simplify existing UI by removing redundant copy, repeated information, and unnecessary containers while preserving essential states and accessible interactions. Use for requests such as UI 정리, 불필요한 설명 제거, 화면 간결화, or progressive disclosure; not for framework migrations or a new visual identity."
+description: "Simplify existing UI by removing redundant copy, repeated information, and unnecessary containers while preserving essential states and accessible interactions. Use for UI cleanup, reducing explanatory text, clarifying visual hierarchy, and progressive disclosure; not for framework migrations or a new visual identity."
 ---
 
 # UI Clarity
 
-기존 화면에서 사용자가 판단하거나 행동하는 데 필요한 정보가 먼저 보이게 한다. 글자 수나 카드 수를 줄이는 것 자체를 목표로 삼지 않는다.
+Make the information people need to decide or act easier to find in an existing interface. Fewer words or cards are not an end in themselves.
 
-## 적용 범위
+## Scope
 
-- 검토 요청에는 제안을, 적용 요청에는 실제 변경을 제공한다. 기존 대화에서 정한 범위와 승인 내용을 따른다. 이 스킬 사용만으로 커밋·푸시·배포까지 요청받았다고 해석하지 않는다.
-- 기존 컴포넌트, 디자인 토큰, 인증, 데이터 흐름을 출발점으로 삼는다. UI 정리를 위해 새 패키지나 아키텍처를 도입하지 않는다.
-- 다국어 화면의 용어와 번역 키를 유지한다. 기존 제품 용어가 부정확하다면 근거를 확인하고 수정한다.
+- For a review request, provide recommendations. For an implementation request, make the changes. Follow the scope and authorization established in the conversation; invoking this skill alone does not authorize commits, pushes, or deployments.
+- Start with the existing components, design tokens, authentication, and data flow. Do not introduce packages or architecture changes solely to simplify the UI.
+- Preserve the product's language, terminology, and translation keys. Respond in the user's language. Verify inaccurate terminology before correcting it.
 
-## 먼저 확인할 것
+## Understand the screen
 
-화면과 관련 구현을 읽고 사용자의 주된 작업을 짧게 정리한다. 각 영역이 답하는 질문, 주요 동작, 필터가 적용되는 범위, 상태 표시를 파악한다. 스크린샷만으로 데이터 의미나 동작을 추측하지 않는다.
+Inspect the screen and relevant implementation. Identify the user's main task, the question each section answers, the primary actions, filter scope, and visible states. Do not infer data semantics or behavior from a screenshot alone.
 
-문구와 컨테이너마다 다음 중 어느 역할인지 판단한다.
+Classify each piece of copy or container by its purpose:
 
-| 역할 | 처리 기준 |
+| Purpose | Treatment |
 | --- | --- |
-| 행동과 판단에 필요한 정보 | 현재 위치에서 읽기 쉽게 유지한다. |
-| 같은 의미와 범위의 반복 | 가장 유용한 위치에 남기고 나머지를 제거한다. |
-| 필요할 때 참고할 정의·계산식 | 해당 지표 옆 도움말이나 펼칠 수 있는 영역으로 옮긴다. |
-| 실제 동작과 다른 설명 | 문구를 고치기 전에 데이터와 동작을 확인한다. |
+| Information needed to decide or act | Keep it readable where the decision happens. |
+| Repetition of the same meaning and scope | Keep the most useful instance and remove the others. |
+| Definitions or formulas needed occasionally | Move them into nearby help or an expandable section. |
+| Explanation that contradicts behavior | Verify the data and behavior before correcting the wording. |
 
-요약과 상세에 같은 숫자가 있다는 이유만으로 삭제하지 않는다. 비교, 탐색, 현재 범위 확인 등 서로 다른 역할이 있다면 유지한다.
+Do not remove a number merely because it appears in both a summary and a detail view. Keep both when they serve different purposes, such as comparison, navigation, or identifying the current scope.
 
-## 문구와 상호작용
+## Copy and interaction
 
-- 제목은 내용이나 할 일을 직접 말한다. 장식용 소제목, 반복되는 페이지명, 버튼명을 풀어 쓴 설명은 실질적인 정보가 있는지 확인한다.
-- “숫자를 누르면 상세 내역을 볼 수 있습니다” 같은 설명을 지우려면 클릭 가능성이 링크 스타일, 버튼 형태, 적절한 아이콘 등으로 드러나야 한다. 색상만으로 구분하지 않는다.
-- 익숙하지 않은 절차, 입력 형식, 비밀번호 조건, 오류 복구에 필요한 안내는 남긴다. 입력 라벨을 placeholder로만 대체하지 않는다.
-- 계산식, 중복 제거 방식, 용어 정의처럼 참고용인 정보는 가까운 곳에서 펼쳐 읽게 한다. 여러 지표에 공통인 정의는 “집계 기준”처럼 의미가 분명한 이름으로 묶는다.
-- 도움말은 마우스 hover에만 의존하지 않는다. 터치와 키보드로 열고 닫을 수 있게 하고, 트리거의 접근 가능한 이름과 닫은 뒤의 포커스를 확인한다. 기존 도움말 컴포넌트가 적합하면 재사용한다.
+- Name the content or action directly. Check whether decorative subtitles, repeated page names, and explanations that restate button labels add useful information.
+- Before removing instructions such as "Click a number to see details," make the interaction discoverable through link styling, button shape, or an appropriate icon. Do not rely on color alone.
+- Keep guidance needed for unfamiliar steps, input formats, password requirements, or error recovery. Do not replace input labels with placeholders alone.
+- Place reference material such as formulas, deduplication rules, and terminology near the relevant metric, available on demand. Group shared definitions under a clear label such as "How metrics are calculated."
+- Help must not depend on hover alone. Support touch and keyboard access, provide an accessible trigger name, and verify closing behavior and focus return. Reuse suitable existing help components.
 
-## 항상 보존할 의미
+## Preserve meaning
 
-- 오류, 로딩, 결과 대기, 부분 집계, 데이터 없음, 0건은 서로 다르다. 오류나 미수집 상태를 0건으로 바꾸지 않는다.
-- 처리 요청의 성공과 최종 결과의 성공을 구별한다. 예를 들어 발송 요청 성공을 수신 완료로 표현하지 않는다.
-- 현재 필터와 실제 데이터 범위가 다르면 해당 영역에 표시한다. 전체 기간의 수치를 선택 기간의 수치처럼 보이게 하지 않는다.
-- 갱신 시각과 데이터가 반영된 시각을 구별한다. 수치 해석에 영향을 주는 지연·미확정 상태는 도움말 안으로 숨기지 않는다.
-- 건수의 단위, 비율의 분모, 중복 제거 기준은 정확하게 유지한다. 합산할 수 없는 고유 사용자 수를 단순 합계로 바꾸지 않는다.
-- 권한, 필수 입력 조건, 중요한 결과나 비용에 관한 안내는 짧아져도 의미가 사라지면 안 된다.
+- Errors, loading, pending results, partial aggregation, missing data, and zero are different states. Never present a failed or missing measurement as zero.
+- Distinguish successful requests from successful outcomes. For example, an accepted message request is not a confirmed delivery.
+- If a section's data scope differs from the active filter, say so in that section. Do not make all-time figures appear to describe the selected period.
+- Distinguish refresh time from the time through which data is available. Keep delays and provisional states visible when they affect interpretation; do not bury them in help.
+- Preserve units, ratio denominators, and deduplication rules. Do not turn distinct-user counts into a simple sum when those counts can overlap.
+- Preserve the meaning of access requirements, required inputs, and consequential outcomes or costs even when shortening their descriptions.
 
-## 시각적 정리
+## Visual hierarchy
 
-- 제목과 여백만으로 구분이 되는 영역은 중첩된 카드나 바깥 테두리를 줄인다. 비교에 도움이 되는 표 경계와 의미 있는 그룹은 유지한다.
-- 기존 글꼴·색상·간격 토큰을 사용한다. 본문을 작고 흐리게 만들어 시각적 잡음을 감추지 않는다.
-- 상태 색상의 의미를 일관되게 유지한다. 장식용 색이나 배지는 별도 정보를 전달할 때만 남긴다.
+- Remove nested cards or outer borders where headings and spacing already separate content. Keep table boundaries and grouping that aid comparison.
+- Use existing typography, color, and spacing tokens. Do not hide visual clutter by making meaningful text smaller or lower contrast.
+- Keep status colors consistent. Retain decorative colors and badges only when they communicate additional information.
 
-## 판단 예시
+## Examples of judgment
 
-| 현재 화면 | 가능한 개선 | 보존할 조건 |
+| Existing UI | Possible improvement | What must remain |
 | --- | --- | --- |
-| 표 아래 “숫자를 클릭하세요” | 숫자에 링크 스타일을 적용하고 설명 제거 | 키보드 탐색과 접근 가능한 이름 |
-| 제목·사이드바·KPI에 동일 합계 | 비교에 적합한 위치로 중복 정리 | 서로 다른 범위의 합계는 구별 |
-| 차트 앞에 긴 계산식 | 지표 옆 도움말 또는 접힌 집계 기준 | 현재 지연·오류는 화면에 표시 |
-| 일부 카드만 기간 필터를 무시 | 카드에 “전체 기간” 표시 | 필터와 범위가 다르다는 사실 |
-| 카드 안에 다시 여러 카드 | 여백과 제목으로 단순화 | 그룹 관계와 표의 읽기 쉬움 |
+| A table caption says "Click a number" | Style the numbers as links and remove the caption | Keyboard access and accessible names |
+| Title, sidebar, and KPI repeat the same total | Keep it where it best supports comparison | Distinctions between totals with different scopes |
+| A long formula precedes a chart | Move it into nearby help or collapsed metric definitions | Current delays and errors remain visible |
+| One card ignores the selected period | Label that card "All time" | The difference between filter and data scope |
+| Cards contain several more cards | Simplify with spacing and headings | Meaningful grouping and table readability |
 
-## 변경 후 확인
+## Verify the change
 
-변경한 화면을 대표적인 데이터와 관련 상태에서 확인한다. 프로젝트에서 지원하는 화면 크기로 줄바꿈, 숫자 잘림, 주요 동작을 살핀다. 필터·상세 이동·도움말을 건드렸다면 해당 동작과 키보드 접근도 확인한다.
+Check the affected screens with representative data and relevant states. Use viewport sizes supported by the project to inspect wrapping, truncated numbers, and primary actions. If filters, detail navigation, or help changed, verify their behavior and keyboard access.
 
-기존 테스트가 삭제된 설명을 찾는다면 그 설명이 보장하던 실제 행동이나 의미를 검증하도록 수정한다. 단순 문구 정리에 불필요한 테스트 체계를 새로 만들지 않는다. 변경에 맞는 기존 검사와 빌드를 실행하고, 직접 확인하지 못한 상태는 결과에 명시한다.
+If an existing test depends on removed explanatory text, update it to check the behavior or meaning that text supported. Do not introduce a new test framework for simple copy edits. Run relevant existing checks and builds, and state which conditions you could not verify directly.
 
-결과는 무엇을 줄였는지, 어떤 의미를 보존했는지, 어디까지 확인했는지 중심으로 짧게 설명한다.
+Report what was simplified, what meaning was preserved, and what was verified.
 
-## 참고
+## Inspiration
 
-[Comwit 디자인 방법론](https://library.comwit.io/template/llms.txt)에서 불필요한 설명과 시각적 중복을 줄이는 관점을 참고했다. 특정 패키지 설치나 프레임워크 이전 절차는 이 스킬의 일부가 아니다. 위 지침은 독립적으로 사용할 수 있으며, 참고 페이지를 매번 읽을 필요는 없다.
+[Comwit's design methodology](https://library.comwit.io/template/llms.txt) informed the approach to reducing unnecessary explanation and visual repetition. Package installation and framework migration are outside this skill's scope. These instructions are self-contained; the reference does not need to be fetched on every use.
